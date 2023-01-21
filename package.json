@@ -1,0 +1,66 @@
+{
+	"name": "status-color",
+	"displayName": "Status Color",
+	"description": "Change VS Code window status bar color with various commands.",
+	"version": "0.0.1",
+	"publisher": "wyspr",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/preprocessor/vscode-statusbar-color"
+	},
+	"license": "GPL-3.0",
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"status",
+		"bar",
+		"id",
+		"windows",
+		"color",
+		"stamp",
+		"identify",
+		"extension",
+		"development",
+		"UI",
+		"vscode"
+	],
+	"icon": "images/icon.png",
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.statusbar",
+				"title": "Color Stamp : ?"
+			},
+			{
+				"command": "extension.statusbar-arg",
+				"title": "Color Stamp : arg"
+			},
+			{
+				"command": "extension.statusbar-X",
+				"title": "Color Stamp : X"
+			}
+		]
+	},
+	"scripts": {
+		"package": "vsce package",
+		"install": "code --install-extension status-color-0.0.1.vsix",
+		"publish": "vsce publish",
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.42",
+		"@types/node": "^8.10.25",
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28"
+	}
+}
