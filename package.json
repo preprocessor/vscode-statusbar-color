@@ -1,8 +1,8 @@
 {
-	"name": "status-color",
-	"displayName": "Status Color",
-	"description": "Change VS Code window status bar color with various commands.",
-	"version": "0.0.1",
+	"name": "statusbar-color-changer",
+	"displayName": "Statusbar Color Changer",
+	"description": "Set the status bar to user-defined colors",
+	"version": "0.1.0",
 	"publisher": "wyspr",
 	"engines": {
 		"vscode": "^1.30.0"
@@ -29,21 +29,34 @@
 		"vscode"
 	],
 	"icon": "images/icon.png",
-	"activationEvents": [],
+	"activationEvents": [
+		"onStartupFinished"
+	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration":[{
+				"title": "Statusbar Color Changer",
+				"properties": {
+					"statusbar.colors": {
+						"markdownDescription": "Commands are in the format: `statusbar-color.color.NAME`",
+						"type": "object",
+						"additionalProperties": {
+							"type": "string",
+							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+							"patternErrorMessage": "Color code should be in hex format"
+						},
+						"default": null
+					}
+				}
+			}],
 		"commands": [
 			{
-				"command": "extension.statusbar",
-				"title": "Color Stamp : ?"
+				"command": "statusbar-color.set",
+				"title": "Statusbar Color: Set"
 			},
 			{
-				"command": "extension.statusbar-arg",
-				"title": "Color Stamp : arg"
-			},
-			{
-				"command": "extension.statusbar-X",
-				"title": "Color Stamp : X"
+				"command": "statusbar-color.reset",
+				"title": "Statusbar Color: Reset"
 			}
 		]
 	},
