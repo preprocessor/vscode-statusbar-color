@@ -34,21 +34,27 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"configuration":[{
+		"configuration": [
+			{
 				"title": "Statusbar Color Changer",
 				"properties": {
-					"statusbar.colors": {
-						"markdownDescription": "Commands are in the format: `statusbar-color.color.NAME`",
-						"type": "object",
-						"additionalProperties": {
-							"type": "string",
-							"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
-							"patternErrorMessage": "Color code should be in hex format"
-						},
-						"default": null
+					"statusbar.text.light": {
+						"type": "string",
+						"default": "#FFFFFF",
+						"markdownDescription": "Color of statusbar text on dark backgrounds",
+						"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+						"patternErrorMessage": "Color code should be in hex format"
+					},
+					"statusbar.text.dark": {
+						"type": "string",
+						"default": "#000000",
+						"markdownDescription": "Color of statusbar text on light backgrounds",
+						"pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+						"patternErrorMessage": "Color code should be in hex format"
 					}
 				}
-			}],
+			}
+		],
 		"commands": [
 			{
 				"command": "statusbar-color.set",
@@ -62,7 +68,7 @@
 	},
 	"scripts": {
 		"package": "vsce package",
-		"install": "code --install-extension status-color-0.0.1.vsix",
+		"install": "code --install-extension status-color-0.1.0.vsix",
 		"publish": "vsce publish",
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
@@ -73,7 +79,11 @@
 	"devDependencies": {
 		"@types/mocha": "^2.2.42",
 		"@types/node": "^8.10.25",
+		"@types/tinycolor2": "^1.4.3",
 		"typescript": "^3.3.1",
 		"vscode": "^1.1.28"
+	},
+	"dependencies": {
+		"tinycolor2": "^1.5.2"
 	}
 }
